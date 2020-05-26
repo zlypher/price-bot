@@ -23,7 +23,17 @@ def format_csv(data):
     return "{0}, \"{1}\", {2}".format(*data)
 
 
-print(format_csv(load_product_info(
-    "https://www.amazon.de/dp/B075D98BF8/?coliid=I11E7D5EZH93MT&colid=166XE3PZ8N0B7&psc=1&ref_=lv_ov_lig_dp_it", amazon_parser)))
-print(format_csv(load_product_info(
-    "https://www.amazon.de/MSI-5700-GAMING-Grafikkarte-DisplayPort/dp/B07XSJ2F8S/ref=sr_1_13", amazon_parser)))
+def run_price_bot(url, parser):
+    try:
+        product_info = load_product_info(url, parser)
+        csv = format_csv(product_info)
+        print(csv)
+    except:
+        pass
+    return
+
+
+run_price_bot(
+    "https://www.amazon.de/dp/B075D98BF8/?coliid=I11E7D5EZH93MT&colid=166XE3PZ8N0B7&psc=1&ref_=lv_ov_lig_dp_it", amazon_parser)
+run_price_bot(
+    "https://www.amazon.de/MSI-5700-GAMING-Grafikkarte-DisplayPort/dp/B07XSJ2F8S/ref=sr_1_13", amazon_parser)
